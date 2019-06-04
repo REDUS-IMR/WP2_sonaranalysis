@@ -24,16 +24,30 @@ for (i in nz){
       ex <- file.exists(file.path(SU90,"ListUserFile20_SU90_vertical.xml"))
     }
     if (ex) {
-      print(c(j,"SU90 Luf20 exist"))
+      print(c(j,"SU90","OK"))
     }
-    else (print(c(j,"SU90 Luf20 does not exist")))
+    else (print(c(j,"SU90","No report")))
     
     # Check for MS70 files
+    
+    # Check for EK60 files
+    EK60 <- file.path(D3,"LSSS","REPORTS")
+    ex <- F
+    if (dir.exists(EK60)) {
+      files=dir('.','*.xml')
+      if (length(files)==0){
+        print(c(j,"Echosounder","No report"))
+      } else if (length(files)>1){
+        print(c(j,"Echosounder","Multiple reports"))
+      } else {
+        print(c(j,"Echosounder","OK"))
+      }
+        
+    }
   }
 }
 
  
-
 # Create StoX projects
 
 
